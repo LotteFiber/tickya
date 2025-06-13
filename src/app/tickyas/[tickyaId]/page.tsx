@@ -6,8 +6,10 @@ type TickyaPageProps = {
   };
 };
 
-const TickyaPage = ({ params }: TickyaPageProps) => {
-  const tickya = initialTickyas.find((tickya) => tickya.id === params.tickyaId);
+
+const TickyaPage = async ({ params }: TickyaPageProps) => {
+  const { tickyaId } = params;
+  const tickya = initialTickyas.find((tickya) => tickya.id === tickyaId);
 
   if (!tickya) {
     return <div>Tickya not found</div>;
