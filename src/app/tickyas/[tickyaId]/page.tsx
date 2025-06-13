@@ -6,6 +6,7 @@ type TickyaPageProps = {
   };
 };
 
+
 const TickyaPage = async ({ params }: TickyaPageProps) => {
   const { tickyaId } = params;
   const tickya = initialTickyas.find((tickya) => tickya.id === tickyaId);
