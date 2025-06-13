@@ -1,14 +1,11 @@
 import { initialTickyas } from "@/data";
 
 type TickyaPageProps = {
-  params: {
-    tickyaId: string;
-  };
+  params: Promise<{ tickyaId: string }>;
 };
 
-
 const TickyaPage = async ({ params }: TickyaPageProps) => {
-  const { tickyaId } = params;
+  const { tickyaId } = await params;
   const tickya = initialTickyas.find((tickya) => tickya.id === tickyaId);
 
   if (!tickya) {
