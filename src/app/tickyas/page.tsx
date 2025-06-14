@@ -52,6 +52,7 @@ const TickyasPage = () => {
                 </Link>
               </Button>
             );
+
             const editButton = (
               <Button variant="outline" size="icon">
                 <LucidePen className="h-4 w-4" />

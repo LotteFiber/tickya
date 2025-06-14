@@ -2,9 +2,10 @@ export const initialTickyas = [
   {
     id: "1",
     status: "DONE" as const,
-    HN: "000120045", // 9 digits
+
+    HN: "000120045",
     patientName: "Michael Thompson",
-    AN: "AN00014001", // 9 characters
+    AN: "AN00014001", 
     department: "IPD",
     description:
       "Dispensed: Paracetamol 500mg x 10 tablets. Patient received medication at bedside. Verified by nurse before discharge.",
