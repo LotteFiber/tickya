@@ -1,8 +1,8 @@
 import clsx from "clsx";
 import { LucideEllipsis, LucidePen, LucideTrash } from "lucide-react";
 
+import { Heading } from "@/components/heading";
 import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
 import {
   Table,
   TableBody,
@@ -23,14 +23,7 @@ const TICKYA_ICONS = {
 const TickyasPage = () => {
   return (
     <div className="flex flex-1 flex-col gap-y-8">
-      <div>
-        <h2 className="text-3xl font-bold tracking-tight">Tickya Page</h2>
-        <p className="text-muted-foreground text-sm">
-          All your tickya at one place
-        </p>
-      </div>
-
-      <Separator />
+      <Heading title="Tickya Page" />
 
       <Table className="animate-fade-in-from-top">
         <TableHeader>
