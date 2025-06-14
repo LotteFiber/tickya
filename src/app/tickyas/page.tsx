@@ -1,5 +1,11 @@
 import clsx from "clsx";
-import { LucideEllipsis, LucidePen, LucideTrash } from "lucide-react";
+import {
+  LucideArrowUpRightFromSquare,
+  LucideEllipsis,
+  LucidePen,
+  LucideTrash,
+} from "lucide-react";
+import Link from "next/link";
 
 import { Heading } from "@/components/heading";
 import { Button } from "@/components/ui/button";
@@ -13,6 +19,7 @@ import {
 } from "@/components/ui/table";
 
 import { initialTickyas } from "@/data";
+import { tickyaPath } from "@/paths";
 
 const TICKYA_ICONS = {
   OPEN: "O",
@@ -23,7 +30,7 @@ const TICKYA_ICONS = {
 const TickyasPage = () => {
   return (
     <div className="flex flex-1 flex-col gap-y-8">
-      <Heading title="Record Page" />
+      <Heading title="Records Page" />
 
       <Table className="animate-fade-in-from-top">
         <TableHeader>
@@ -38,6 +45,13 @@ const TickyasPage = () => {
         </TableHeader>
         <TableBody>
           {initialTickyas.map((tickya) => {
+            const detailButton = (
+              <Button variant="outline" size="icon" asChild>
+                <Link href={tickyaPath(tickya.id)}>
+                  <LucideArrowUpRightFromSquare className="h-4 w-4" />
+                </Link>
+              </Button>
+            );
             const editButton = (
               <Button variant="outline" size="icon">
                 <LucidePen className="h-4 w-4" />
@@ -58,6 +72,7 @@ const TickyasPage = () => {
 
             const buttons = (
               <>
+                {detailButton}
                 {editButton}
                 {deleteButton}
                 {moreMenuButton}
@@ -71,7 +86,7 @@ const TickyasPage = () => {
               >
                 <TableCell>{TICKYA_ICONS[tickya.status]}</TableCell>
                 <TableCell>{tickya.HN}</TableCell>
-                <TableCell>{tickya.name}</TableCell>
+                <TableCell>{tickya.patientName}</TableCell>
                 <TableCell>{tickya.AN}</TableCell>
                 <TableCell>{tickya.department}</TableCell>
                 <TableCell className="flex justify-end gap-x-2">

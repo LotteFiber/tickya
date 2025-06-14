@@ -2,25 +2,31 @@ export const initialTickyas = [
   {
     id: "1",
     status: "DONE" as const,
-    HN: "0001234",
-    name: "John Doe",
-    AN: "0011234",
+    HN: "000120045",
+    patientName: "Michael Thompson",
+    AN: "AN00014001",
     department: "IPD",
+    description:
+      "Dispensed: Paracetamol 500mg x 10 tablets. Patient received medication at bedside. Verified by nurse before discharge.",
   },
   {
     id: "2",
     status: "OPEN" as const,
-    HN: "0002234",
-    name: "Jane Doe",
-    AN: "0012234",
+    HN: "000120089",
+    patientName: "Suphansa Rattanakul",
+    AN: "AN00014002",
     department: "OPD",
+    description:
+      "Pending dispensing. Prescription includes Amoxicillin 500mg x 21 capsules. Waiting for pharmacist verification.",
   },
   {
     id: "3",
     status: "IN_PROGRESS" as const,
-    HN: "0003234",
-    name: "Foo Bar",
-    AN: "0013234",
+    HN: "000120065",
+    patientName: "Anan Phongchai",
+    AN: "AN00014003",
     department: "1Stop",
+    description:
+      "Currently dispensing: Ibuprofen 200mg x 15 tablets. Patient identity verified. Labeling in progress.",
   },
 ];
