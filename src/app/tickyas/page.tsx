@@ -7,6 +7,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 
+
 import { Heading } from "@/components/heading";
 import { Button } from "@/components/ui/button";
 import {
@@ -52,6 +53,7 @@ const TickyasPage = () => {
                 </Link>
               </Button>
             );
+        
             const editButton = (
               <Button variant="outline" size="icon">
                 <LucidePen className="h-4 w-4" />
