@@ -5,7 +5,7 @@ export const initialTickyas = [
     HN: "0001234",
     name: "John Doe",
     AN: "0011234",
-    Department: "IPD",
+    department: "IPD",
   },
   {
     id: "2",
@@ -13,7 +13,7 @@ export const initialTickyas = [
     HN: "0002234",
     name: "Jane Doe",
     AN: "0012234",
-    Department: "OPD",
+    department: "OPD",
   },
   {
     id: "3",
@@ -21,6 +21,6 @@ export const initialTickyas = [
     HN: "0003234",
     name: "Foo Bar",
     AN: "0013234",
-    Department: "1Stop",
+    department: "1Stop",
   },
 ];
