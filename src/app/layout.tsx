@@ -3,6 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 
 import { Header } from "@/components/header";
 
+import { buttonVariants } from "@/components/ui/button";
+
 import "./globals.css";
 
 const geistSans = Geist({
@@ -31,6 +33,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} dark antialiased`}
       >
         <Header />
+
         <main className="bg-secondary/20 flex min-h-screen flex-1 flex-col overflow-x-hidden overflow-y-auto px-8 py-24">
           {children}
         </main>

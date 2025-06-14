@@ -52,6 +52,7 @@ const TickyasPage = () => {
                 </Link>
               </Button>
             );
+
             const editButton = (
               <Button variant="outline" size="icon">
                 <LucidePen className="h-4 w-4" />
@@ -87,6 +88,7 @@ const TickyasPage = () => {
                 <TableCell>{TICKYA_ICONS[tickya.status]}</TableCell>
                 <TableCell>{tickya.HN}</TableCell>
                 <TableCell>{tickya.patientName}</TableCell>
+                <TableCell>{tickya.name}</TableCell>
                 <TableCell>{tickya.AN}</TableCell>
                 <TableCell>{tickya.department}</TableCell>
                 <TableCell className="flex justify-end gap-x-2">
