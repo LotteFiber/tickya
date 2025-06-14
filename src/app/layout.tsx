@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import Link from "next/link";
 
-import { buttonVariants } from "@/components/ui/button";
+import { Header } from "@/components/header";
 
 import "./globals.css";
-import { homePath, tickyasPath } from "@/paths";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,24 +30,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} dark antialiased`}
       >
-        <nav className="supports-backdrop-blur:bg-background/60 bg-background/95 backgdrop-blur w-ful fixed top-0 right-0 left-0 z-20 flex gap-x-4 border-b px-5 py-2.5">
-          <div>
-            <Link
-              href={homePath()}
-              className={buttonVariants({ variant: "outline" })}
-            >
-              Home
-            </Link>
-          </div>
-          <div>
-            <Link
-              href={tickyasPath()}
-              className={buttonVariants({ variant: "outline" })}
-            >
-              Tickyas
-            </Link>
-          </div>
-        </nav>
+        <Header />
         <main className="bg-secondary/20 flex min-h-screen flex-1 flex-col overflow-x-hidden overflow-y-auto px-8 py-24">
           {children}
         </main>
