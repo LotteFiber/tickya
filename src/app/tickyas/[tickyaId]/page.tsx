@@ -1,8 +1,4 @@
-import Link from "next/link";
-
 import { Heading } from "@/components/heading";
-import { Placeholder } from "@/components/placeholder";
-import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -13,7 +9,8 @@ import {
 } from "@/components/ui/card";
 
 import { initialTickyas } from "@/data";
-import { tickyasPath } from "@/paths";
+
+import NotFound from "./not-found";
 
 type TickyaPageProps = {
   params: Promise<{ tickyaId: string }>;
@@ -24,16 +21,7 @@ const TickyaPage = async ({ params }: TickyaPageProps) => {
   const tickya = initialTickyas.find((tickya) => tickya.id === tickyaId);
 
   if (!tickya) {
-    return (
-      <Placeholder
-        label="Record not found"
-        button={
-          <Button asChild variant="outline">
-            <Link href={tickyasPath()}>Go to tickets</Link>
-          </Button>
-        }
-      />
-    );
+    return <NotFound />;
   }
 
   return (
