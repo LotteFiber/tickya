@@ -1,5 +1,13 @@
-import clsx from "clsx";
 import Link from "next/link";
+
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
 
 import { initialTickyas } from "@/data";
 import { tickyaPath } from "@/paths";
@@ -20,24 +28,28 @@ const TickyasPage = () => {
         </p>
       </div>
 
+      <Separator />
+
       <div className="animate-fade-in-from-top flex flex-1 flex-col items-center gap-y-4">
         {initialTickyas.map((tickya) => (
-          <div
-            key={tickya.id}
-            className="w-full max-w-[420px] rounded border border-slate-400 p-4"
-          >
-            <div>{TICKYA_ICONS[tickya.status]}</div>
-            <h3
-              className={clsx("truncate text-lg font-semibold", {
-                "line-through": tickya.status === "DONE",
-              })}
-            >
-              {tickya.name}
-            </h3>
-            <Link href={tickyaPath(tickya.id)} className="text-sm underline">
-              View
-            </Link>
-          </div>
+          <Card key={tickya.id} className="w-full max-w-[420px] p-4">
+            <CardHeader>
+              <CardTitle className="flex gap-x-2">
+                <span>{TICKYA_ICONS[tickya.status]}</span>
+                <span className="truncate">{tickya.AN}</span>
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <span className="line-clamp-3 whitespace-break-spaces">
+                {tickya.name}
+              </span>
+            </CardContent>
+            <CardFooter>
+              <Link href={tickyaPath(tickya.id)} className="text-sm underline">
+                View
+              </Link>
+            </CardFooter>
+          </Card>
         ))}
       </div>
     </div>
