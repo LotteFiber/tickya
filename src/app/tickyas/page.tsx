@@ -23,7 +23,7 @@ const TICKYA_ICONS = {
 const TickyasPage = () => {
   return (
     <div className="flex flex-1 flex-col gap-y-8">
-      <Heading title="Tickya Page" />
+      <Heading title="Record Page" />
 
       <Table className="animate-fade-in-from-top">
         <TableHeader>
