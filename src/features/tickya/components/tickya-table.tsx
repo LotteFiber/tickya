@@ -18,12 +18,14 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-import { initialTickyas } from "@/data";
 import { tickyaPath } from "@/paths";
 
 import { TICKYA_ICONS } from "../constants";
+import { getTickyas } from "../queries/get-tickyas";
 
-const TickyaTable = () => {
+const TickyaTable = async () => {
+  const tickyas = await getTickyas();
+
   return (
     <Table className="animate-fade-in-from-top">
       <TableHeader>
@@ -37,7 +39,7 @@ const TickyaTable = () => {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {initialTickyas.map((tickya) => {
+        {tickyas.map((tickya) => {
           const detailButton = (
             <Button variant="outline" size="icon" asChild>
               <Link href={tickyaPath(tickya.id)}>
