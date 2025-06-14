@@ -1,16 +1,18 @@
-import Link from "next/link";
+import clsx from "clsx";
+import { LucideEllipsis, LucidePen, LucideTrash } from "lucide-react";
 
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 
 import { initialTickyas } from "@/data";
-import { tickyaPath } from "@/paths";
 
 const TICKYA_ICONS = {
   OPEN: "O",
@@ -30,28 +32,63 @@ const TickyasPage = () => {
 
       <Separator />
 
-      <div className="animate-fade-in-from-top flex flex-1 flex-col items-center gap-y-4">
-        {initialTickyas.map((tickya) => (
-          <Card key={tickya.id} className="w-full max-w-[420px] p-4">
-            <CardHeader>
-              <CardTitle className="flex gap-x-2">
-                <span>{TICKYA_ICONS[tickya.status]}</span>
-                <span className="truncate">{tickya.AN}</span>
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <span className="line-clamp-3 whitespace-break-spaces">
-                {tickya.name}
-              </span>
-            </CardContent>
-            <CardFooter>
-              <Link href={tickyaPath(tickya.id)} className="text-sm underline">
-                View
-              </Link>
-            </CardFooter>
-          </Card>
-        ))}
-      </div>
+      <Table className="animate-fade-in-from-top">
+        <TableHeader>
+          <TableRow>
+            <TableHead>Status</TableHead>
+            <TableHead>HN</TableHead>
+            <TableHead>Patient Name</TableHead>
+            <TableHead>AN</TableHead>
+            <TableHead>Department</TableHead>
+            <TableHead />
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {initialTickyas.map((tickya) => {
+            const editButton = (
+              <Button variant="outline" size="icon">
+                <LucidePen className="h-4 w-4" />
+              </Button>
+            );
+
+            const deleteButton = (
+              <Button variant="destructive" size="icon">
+                <LucideTrash className="h-4 w-4" />
+              </Button>
+            );
+
+            const moreMenuButton = (
+              <Button variant="ghost" size="icon">
+                <LucideEllipsis className="h-4 w-4" />
+              </Button>
+            );
+
+            const buttons = (
+              <>
+                {editButton}
+                {deleteButton}
+                {moreMenuButton}
+              </>
+            );
+
+            return (
+              <TableRow
+                key={tickya.id}
+                className={clsx({ "line-through": tickya.status === "DONE" })}
+              >
+                <TableCell>{TICKYA_ICONS[tickya.status]}</TableCell>
+                <TableCell>{tickya.HN}</TableCell>
+                <TableCell>{tickya.name}</TableCell>
+                <TableCell>{tickya.AN}</TableCell>
+                <TableCell>{tickya.department}</TableCell>
+                <TableCell className="flex justify-end gap-x-2">
+                  {buttons}
+                </TableCell>
+              </TableRow>
+            );
+          })}
+        </TableBody>
+      </Table>
     </div>
   );
 };
