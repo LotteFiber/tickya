@@ -11,7 +11,6 @@
     "format-check": "prettier \"**/*.{js,ts,tsx,jsx}\" --check",
     "format-write": "prettier \"**/*.{js,ts,tsx,jsx}\" --write",
     "type": "tsc --noEmit",
-    "postinstall": "prisma generate",
     "prisma-seed": "tsx prisma/seed.ts"
   },
   "dependencies": {
