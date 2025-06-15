@@ -23,7 +23,7 @@ model Tickya {
   HN          String
   patientName String
   AN          String
-  department  String
+  department  Department
   description String       @db.VarChar(1024)
 }
 
@@ -31,4 +31,10 @@ enum TickyaStatus {
   OPEN
   IN_PROGRESS
   DONE
+}
+
+enum Department {
+  OPD
+  IPD
+  OneStop
 }

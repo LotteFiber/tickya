@@ -147,6 +147,12 @@ exports.TickyaStatus = exports.$Enums.TickyaStatus = {
   DONE: 'DONE'
 };
 
+exports.Department = exports.$Enums.Department = {
+  OPD: 'OPD',
+  IPD: 'IPD',
+  OneStop: 'OneStop'
+};
+
 exports.Prisma.ModelName = {
   Tickya: 'Tickya'
 };

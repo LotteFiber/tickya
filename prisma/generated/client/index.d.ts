@@ -31,11 +31,24 @@ export namespace $Enums {
 
 export type TickyaStatus = (typeof TickyaStatus)[keyof typeof TickyaStatus]
 
+
+export const Department: {
+  OPD: 'OPD',
+  IPD: 'IPD',
+  OneStop: 'OneStop'
+};
+
+export type Department = (typeof Department)[keyof typeof Department]
+
 }
 
 export type TickyaStatus = $Enums.TickyaStatus
 
 export const TickyaStatus: typeof $Enums.TickyaStatus
+
+export type Department = $Enums.Department
+
+export const Department: typeof $Enums.Department
 
 /**
  * ##  Prisma Client ʲˢ
@@ -905,7 +918,7 @@ export namespace Prisma {
     HN: string | null
     patientName: string | null
     AN: string | null
-    department: string | null
+    department: $Enums.Department | null
     description: string | null
   }
 
@@ -917,7 +930,7 @@ export namespace Prisma {
     HN: string | null
     patientName: string | null
     AN: string | null
-    department: string | null
+    department: $Enums.Department | null
     description: string | null
   }
 
@@ -1052,7 +1065,7 @@ export namespace Prisma {
     HN: string
     patientName: string
     AN: string
-    department: string
+    department: $Enums.Department
     description: string
     _count: TickyaCountAggregateOutputType | null
     _min: TickyaMinAggregateOutputType | null
@@ -1134,7 +1147,7 @@ export namespace Prisma {
       HN: string
       patientName: string
       AN: string
-      department: string
+      department: $Enums.Department
       description: string
     }, ExtArgs["result"]["tickya"]>
     composites: {}
@@ -1566,7 +1579,7 @@ export namespace Prisma {
     readonly HN: FieldRef<"Tickya", 'String'>
     readonly patientName: FieldRef<"Tickya", 'String'>
     readonly AN: FieldRef<"Tickya", 'String'>
-    readonly department: FieldRef<"Tickya", 'String'>
+    readonly department: FieldRef<"Tickya", 'Department'>
     readonly description: FieldRef<"Tickya", 'String'>
   }
     
@@ -2027,6 +2040,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Department'
+   */
+  export type EnumDepartmentFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Department'>
+    
+
+
+  /**
+   * Reference to a field of type 'Department[]'
+   */
+  export type ListEnumDepartmentFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Department[]'>
+    
+
+
+  /**
    * Reference to a field of type 'Int'
    */
   export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
@@ -2054,7 +2081,7 @@ export namespace Prisma {
     HN?: StringFilter<"Tickya"> | string
     patientName?: StringFilter<"Tickya"> | string
     AN?: StringFilter<"Tickya"> | string
-    department?: StringFilter<"Tickya"> | string
+    department?: EnumDepartmentFilter<"Tickya"> | $Enums.Department
     description?: StringFilter<"Tickya"> | string
   }
 
@@ -2081,7 +2108,7 @@ export namespace Prisma {
     HN?: StringFilter<"Tickya"> | string
     patientName?: StringFilter<"Tickya"> | string
     AN?: StringFilter<"Tickya"> | string
-    department?: StringFilter<"Tickya"> | string
+    department?: EnumDepartmentFilter<"Tickya"> | $Enums.Department
     description?: StringFilter<"Tickya"> | string
   }, "id">
 
@@ -2111,7 +2138,7 @@ export namespace Prisma {
     HN?: StringWithAggregatesFilter<"Tickya"> | string
     patientName?: StringWithAggregatesFilter<"Tickya"> | string
     AN?: StringWithAggregatesFilter<"Tickya"> | string
-    department?: StringWithAggregatesFilter<"Tickya"> | string
+    department?: EnumDepartmentWithAggregatesFilter<"Tickya"> | $Enums.Department
     description?: StringWithAggregatesFilter<"Tickya"> | string
   }
 
@@ -2123,7 +2150,7 @@ export namespace Prisma {
     HN: string
     patientName: string
     AN: string
-    department: string
+    department: $Enums.Department
     description: string
   }
 
@@ -2135,7 +2162,7 @@ export namespace Prisma {
     HN: string
     patientName: string
     AN: string
-    department: string
+    department: $Enums.Department
     description: string
   }
 
@@ -2147,7 +2174,7 @@ export namespace Prisma {
     HN?: StringFieldUpdateOperationsInput | string
     patientName?: StringFieldUpdateOperationsInput | string
     AN?: StringFieldUpdateOperationsInput | string
-    department?: StringFieldUpdateOperationsInput | string
+    department?: EnumDepartmentFieldUpdateOperationsInput | $Enums.Department
     description?: StringFieldUpdateOperationsInput | string
   }
 
@@ -2159,7 +2186,7 @@ export namespace Prisma {
     HN?: StringFieldUpdateOperationsInput | string
     patientName?: StringFieldUpdateOperationsInput | string
     AN?: StringFieldUpdateOperationsInput | string
-    department?: StringFieldUpdateOperationsInput | string
+    department?: EnumDepartmentFieldUpdateOperationsInput | $Enums.Department
     description?: StringFieldUpdateOperationsInput | string
   }
 
@@ -2171,7 +2198,7 @@ export namespace Prisma {
     HN: string
     patientName: string
     AN: string
-    department: string
+    department: $Enums.Department
     description: string
   }
 
@@ -2183,7 +2210,7 @@ export namespace Prisma {
     HN?: StringFieldUpdateOperationsInput | string
     patientName?: StringFieldUpdateOperationsInput | string
     AN?: StringFieldUpdateOperationsInput | string
-    department?: StringFieldUpdateOperationsInput | string
+    department?: EnumDepartmentFieldUpdateOperationsInput | $Enums.Department
     description?: StringFieldUpdateOperationsInput | string
   }
 
@@ -2195,7 +2222,7 @@ export namespace Prisma {
     HN?: StringFieldUpdateOperationsInput | string
     patientName?: StringFieldUpdateOperationsInput | string
     AN?: StringFieldUpdateOperationsInput | string
-    department?: StringFieldUpdateOperationsInput | string
+    department?: EnumDepartmentFieldUpdateOperationsInput | $Enums.Department
     description?: StringFieldUpdateOperationsInput | string
   }
 
@@ -2230,6 +2257,13 @@ export namespace Prisma {
     in?: $Enums.TickyaStatus[] | ListEnumTickyaStatusFieldRefInput<$PrismaModel>
     notIn?: $Enums.TickyaStatus[] | ListEnumTickyaStatusFieldRefInput<$PrismaModel>
     not?: NestedEnumTickyaStatusFilter<$PrismaModel> | $Enums.TickyaStatus
+  }
+
+  export type EnumDepartmentFilter<$PrismaModel = never> = {
+    equals?: $Enums.Department | EnumDepartmentFieldRefInput<$PrismaModel>
+    in?: $Enums.Department[] | ListEnumDepartmentFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Department[] | ListEnumDepartmentFieldRefInput<$PrismaModel>
+    not?: NestedEnumDepartmentFilter<$PrismaModel> | $Enums.Department
   }
 
   export type TickyaCountOrderByAggregateInput = {
@@ -2310,6 +2344,16 @@ export namespace Prisma {
     _max?: NestedEnumTickyaStatusFilter<$PrismaModel>
   }
 
+  export type EnumDepartmentWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.Department | EnumDepartmentFieldRefInput<$PrismaModel>
+    in?: $Enums.Department[] | ListEnumDepartmentFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Department[] | ListEnumDepartmentFieldRefInput<$PrismaModel>
+    not?: NestedEnumDepartmentWithAggregatesFilter<$PrismaModel> | $Enums.Department
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumDepartmentFilter<$PrismaModel>
+    _max?: NestedEnumDepartmentFilter<$PrismaModel>
+  }
+
   export type StringFieldUpdateOperationsInput = {
     set?: string
   }
@@ -2320,6 +2364,10 @@ export namespace Prisma {
 
   export type EnumTickyaStatusFieldUpdateOperationsInput = {
     set?: $Enums.TickyaStatus
+  }
+
+  export type EnumDepartmentFieldUpdateOperationsInput = {
+    set?: $Enums.Department
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -2352,6 +2400,13 @@ export namespace Prisma {
     in?: $Enums.TickyaStatus[] | ListEnumTickyaStatusFieldRefInput<$PrismaModel>
     notIn?: $Enums.TickyaStatus[] | ListEnumTickyaStatusFieldRefInput<$PrismaModel>
     not?: NestedEnumTickyaStatusFilter<$PrismaModel> | $Enums.TickyaStatus
+  }
+
+  export type NestedEnumDepartmentFilter<$PrismaModel = never> = {
+    equals?: $Enums.Department | EnumDepartmentFieldRefInput<$PrismaModel>
+    in?: $Enums.Department[] | ListEnumDepartmentFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Department[] | ListEnumDepartmentFieldRefInput<$PrismaModel>
+    not?: NestedEnumDepartmentFilter<$PrismaModel> | $Enums.Department
   }
 
   export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
@@ -2404,6 +2459,16 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumTickyaStatusFilter<$PrismaModel>
     _max?: NestedEnumTickyaStatusFilter<$PrismaModel>
+  }
+
+  export type NestedEnumDepartmentWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.Department | EnumDepartmentFieldRefInput<$PrismaModel>
+    in?: $Enums.Department[] | ListEnumDepartmentFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Department[] | ListEnumDepartmentFieldRefInput<$PrismaModel>
+    not?: NestedEnumDepartmentWithAggregatesFilter<$PrismaModel> | $Enums.Department
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumDepartmentFilter<$PrismaModel>
+    _max?: NestedEnumDepartmentFilter<$PrismaModel>
   }
 
 
