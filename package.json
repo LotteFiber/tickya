@@ -11,7 +11,7 @@
     "format-check": "prettier \"**/*.{js,ts,tsx,jsx}\" --check",
     "format-write": "prettier \"**/*.{js,ts,tsx,jsx}\" --write",
     "type": "tsc --noEmit",
-    "postinstall": "pnpm exec prisma migrate dev --name init",
+    "postinstall": "pnpm gegerate",
     "prisma-seed": "tsx prisma/seed.ts"
   },
   "dependencies": {
