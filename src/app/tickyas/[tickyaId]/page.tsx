@@ -9,7 +9,6 @@ import {
 } from "@/components/ui/card";
 
 import { initialTickyas } from "@/data";
-import { tickyasPath } from "@/paths";
 
 import NotFound from "./not-found";
 
