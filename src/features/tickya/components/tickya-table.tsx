@@ -1,3 +1,5 @@
+import { cloneElement } from "react";
+import Link from "next/link";
 import clsx from "clsx";
 import {
   LucideArrowUpRightFromSquare,
@@ -5,9 +7,6 @@ import {
   LucidePen,
   LucideTrash,
 } from "lucide-react";
-import Link from "next/link";
-import { cloneElement } from "react";
-
 import { Button } from "@/components/ui/button";
 import {
   Table,
@@ -17,9 +16,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-
 import { tickyaPath } from "@/paths";
-
 import { TICKYA_ICONS } from "../constants";
 import { getTickyas } from "../queries/get-tickyas";
 

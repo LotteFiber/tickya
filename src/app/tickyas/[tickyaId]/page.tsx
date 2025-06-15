@@ -7,9 +7,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-
 import { getTickya } from "@/features/tickya/queries/get-tickya";
-
 import NotFound from "./not-found";
 
 type TickyaPageProps = {

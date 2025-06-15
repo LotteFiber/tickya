@@ -1,9 +1,7 @@
-import { LucidePill } from "lucide-react";
-import Link from "next/link";
 import { cloneElement } from "react";
-
+import Link from "next/link";
+import { LucidePill } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
-
 import { homePath, tickyasPath } from "@/paths";
 
 const Header = () => {

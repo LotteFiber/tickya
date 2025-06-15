@@ -19,6 +19,8 @@
     "prettier-plugin-tailwindcss"
   ],
   "importOrder": [
+    "^react$",
+    "^next",
     "<THIRD_PARTY_MODULES>",
     "^@/lib/(.*)$",
     "^@/components/(.*)$",
@@ -27,6 +29,6 @@
     "^../(.*)$",
     "^./(.*)$"
   ],
-  "importOrderSeparation": true,
+  "importOrderSeparation": false,
   "importOrderSortSpecifiers": true
 }

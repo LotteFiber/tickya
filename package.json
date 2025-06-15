@@ -8,6 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "lint-fix": "next lint --fix",
+    "format-check": "prettier \"**/*.{js,ts,tsx,jsx}\" --check",
+    "format-write": "prettier \"**/*.{js,ts,tsx,jsx}\" --write",
     "type": "tsc --noEmit",
     "postinstall": "pnpm exec prisma migrate dev --name init",
     "prisma-seed": "tsx prisma/seed.ts"
