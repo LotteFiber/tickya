@@ -1,4 +1,5 @@
 import { cloneElement } from "react";
+import { revalidatePath } from "next/cache";
 import Link from "next/link";
 import clsx from "clsx";
 import {
@@ -7,6 +8,7 @@ import {
   LucidePen,
   LucideTrash,
 } from "lucide-react";
+import prisma from "@/lib/prisma";
 import { Button } from "@/components/ui/button";
 import {
   Table,
@@ -16,12 +18,23 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { tickyaPath } from "@/paths";
+import { tickyaPath, tickyasPath } from "@/paths";
 import { TICKYA_ICONS } from "../constants";
 import { getTickyas } from "../queries/get-tickyas";
 
 const TickyaTable = async () => {
   const tickyas = await getTickyas();
+
+  const handleDeleteTickya = async (formData: FormData) => {
+    "use server";
+    const id = formData.get("id") as string;
+
+    await prisma.tickya.delete({
+      where: { id },
+    });
+
+    revalidatePath(tickyasPath());
+  };
 
   return (
     <Table className="animate-fade-in-from-top">
@@ -51,9 +64,12 @@ const TickyaTable = async () => {
           );
 
           const deleteButton = (
-            <Button variant="destructive" size="icon">
-              <LucideTrash className="h-4 w-4" />
-            </Button>
+            <form action={handleDeleteTickya}>
+              <input type="hidden" name="id" value={tickya.id} />
+              <Button variant="destructive" size="icon" type="submit">
+                <LucideTrash className="h-4 w-4" />
+              </Button>
+            </form>
           );
 
           const moreMenuButton = (
