@@ -7,9 +7,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-
-import { initialTickyas } from "@/data";
-
+import { getTickya } from "@/features/tickya/queries/get-tickya";
 import NotFound from "./not-found";
 
 type TickyaPageProps = {
@@ -18,7 +16,7 @@ type TickyaPageProps = {
 
 const TickyaPage = async ({ params }: TickyaPageProps) => {
   const { tickyaId } = await params;
-  const tickya = initialTickyas.find((tickya) => tickya.id === tickyaId);
+  const tickya = await getTickya(tickyaId);
 
   if (!tickya) {
     return <NotFound />;
