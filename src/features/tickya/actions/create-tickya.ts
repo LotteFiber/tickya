@@ -3,27 +3,28 @@
 import { revalidatePath } from "next/cache";
 import prisma from "@/lib/prisma";
 import { tickyasPath } from "@/paths";
+import { Department, TickyaStatus } from "@/prisma/generated/client";
+
+type TickyaForm = {
+  status: TickyaStatus;
+  HN: string;
+  patientName: string;
+  AN: string;
+  department: Department;
+  description: string;
+};
 
 export const createTickya = async (formData: FormData) => {
-  const data = {
-    status: formData.get("status"),
-    HN: formData.get("HN"),
-    patientName: formData.get("patientName"),
-    AN: formData.get("AN"),
-    department: formData.get("department"),
-    description: formData.get("description"),
+  const data: TickyaForm = {
+    status: formData.get("status") as TickyaStatus,
+    HN: String(formData.get("HN") || "").trim(),
+    patientName: String(formData.get("patientName") || "").trim(),
+    AN: String(formData.get("AN") || "").trim(),
+    department: formData.get("department") as Department,
+    description: String(formData.get("description") || "").trim(),
   };
 
-  await prisma.tickya.create({
-    data: {
-      status: data.status,
-      HN: data.HN,
-      patientName: data.patientName,
-      AN: data.AN,
-      department: data.department,
-      description: data.description,
-    },
-  });
+  await prisma.tickya.create({ data });
 
   revalidatePath(tickyasPath());
 };

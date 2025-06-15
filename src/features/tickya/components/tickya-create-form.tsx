@@ -61,10 +61,10 @@ const TickyaCreateForm = () => {
       <StatusRadioGroup />
 
       <Label htmlFor="HN">HN</Label>
-      <Input id="HN" name="HN" type="text" required />
+      <Input id="HN" name="HN" type="text" />
 
       <Label htmlFor="patientName">Patient Name</Label>
-      <Input id="patientName" name="patientName" type="text" required />
+      <Input id="patientName" name="patientName" type="text" />
 
       <Label htmlFor="AN">AN</Label>
       <Input id="AN" name="AN" type="text" />
