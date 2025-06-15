@@ -2,7 +2,7 @@ import { Suspense } from "react";
 
 import { Heading } from "@/components/heading";
 import { Spinner } from "@/components/spinner";
-
+        
 import { TickyaTable } from "@/features/tickya/components/tickya-table";
 
 const TickyasPage = () => {

@@ -25,7 +25,7 @@ import { getTickyas } from "../queries/get-tickyas";
 
 const TickyaTable = async () => {
   const tickyas = await getTickyas();
-
+    
   return (
     <Table className="animate-fade-in-from-top">
       <TableHeader>
