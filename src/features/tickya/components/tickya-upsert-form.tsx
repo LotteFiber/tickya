@@ -1,6 +1,6 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useState } from "react";
 import { FieldError } from "@/components/form/field-error";
 import { Form } from "@/components/form/form";
 import { SubmitButton } from "@/components/form/submit-button";
@@ -22,16 +22,25 @@ const TickyaUpsertForm = ({ tickya }: TickyaUpsertFormProps) => {
     EMPTY_ACTION_STATE
   );
 
+  const [status, setStatus] = useState<string>(
+    (actionState.payload?.get("status") as string) ?? tickya?.status
+  );
+
+  const [department, setDepartment] = useState<string>(
+    (actionState.payload?.get("department") as string) ?? tickya?.department
+  );
+
   const StatusRadioGroup = () => (
     <>
-      <Label htmlFor="status">Status</Label>
+      <Label htmlFor="status" className="font-semibold">
+        Status
+      </Label>
       <RadioGroup
         name="status"
         id="status"
         className="flex flex-col gap-2"
-        defaultValue={
-          (actionState.payload?.get("status") as string) ?? tickya?.status
-        }
+        value={status}
+        onValueChange={(val) => setStatus(val)}
       >
         <span className="flex items-center space-x-2">
           <RadioGroupItem value="OPEN" id="status-open" />
@@ -57,10 +66,8 @@ const TickyaUpsertForm = ({ tickya }: TickyaUpsertFormProps) => {
         name="department"
         id="department"
         className="flex flex-col gap-2"
-        defaultValue={
-          (actionState.payload?.get("department") as string) ??
-          tickya?.department
-        }
+        value={department}
+        onValueChange={(val) => setDepartment(val)}
       >
         <span className="flex items-center space-x-2">
           <RadioGroupItem value="OPD" id="department-opd" />
