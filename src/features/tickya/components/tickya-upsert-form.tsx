@@ -1,12 +1,10 @@
 "use client";
 
 import { useActionState } from "react";
-import { LucideLoaderCircle } from "lucide-react";
-import { useFormStatus } from "react-dom";
 import { FieldError } from "@/components/form/field-error";
 import { Form } from "@/components/form/form";
+import { SubmitButton } from "@/components/form/submit-button";
 import { EMPTY_ACTION_STATE } from "@/components/form/utils/to-action-state";
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
@@ -16,20 +14,6 @@ import { Tickya } from "../type";
 
 type TickyaUpsertFormProps = {
   tickya?: Tickya;
-};
-
-type SubmitButtonProps = {
-  label: string;
-};
-
-const SubmitButton = ({ label }: SubmitButtonProps) => {
-  const { pending } = useFormStatus();
-  return (
-    <Button disabled={pending} type="submit" className="mt-2">
-      {pending && <LucideLoaderCircle className="h-4 w-4 animate-spin" />}
-      {label}
-    </Button>
-  );
 };
 
 const TickyaUpsertForm = ({ tickya }: TickyaUpsertFormProps) => {
