@@ -3,6 +3,10 @@
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
 import prisma from "@/lib/prisma";
+import {
+  ActionState,
+  fromErrorToActionState,
+} from "@/components/form/utils/to-action-state";
 import { tickyasPath } from "@/paths";
 
 const upsertTickyaSchema = z.object({
@@ -16,7 +20,7 @@ const upsertTickyaSchema = z.object({
 
 export const upsertTickya = async (
   id: string | undefined,
-  _actionState: { message: string; payload?: FormData },
+  _actionState: ActionState,
   formData: FormData
 ) => {
   try {
@@ -49,11 +53,7 @@ export const upsertTickya = async (
     }
 
     return { message: "Record created" };
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (error) {
-    return {
-      message: "Something went wrong",
-      payload: formData,
-    };
+    return fromErrorToActionState(error, formData);
   }
 };
