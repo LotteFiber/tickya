@@ -11,9 +11,13 @@ import { tickyasPath } from "@/paths";
 
 const upsertTickyaSchema = z.object({
   status: z.enum(["OPEN", "IN_PROGRESS", "DONE"]),
-  HN: z.string().min(9).max(9),
+  HN: z.string().refine((val) => /^\d{9}$/.test(val), {
+    message: "The HN number must have 9 digits.",
+  }),
   patientName: z.string().min(1).max(256),
-  AN: z.string().min(9).max(9),
+  AN: z.string().refine((val) => /^\d{9}$/.test(val), {
+    message: "The AN number must have 9 digits.",
+  }),
   department: z.enum(["OPD", "IPD", "OneStop"]),
   description: z.string().optional(),
 });
@@ -49,10 +53,10 @@ export const upsertTickya = async (
     revalidatePath(tickyasPath());
 
     if (id) {
-      return { message: "Record has edited" };
+      return { message: "Record has edited", fieldError: {} };
     }
 
-    return { message: "Record created" };
+    return { message: "Record created", fieldError: {} };
   } catch (error) {
     return fromErrorToActionState(error, formData);
   }

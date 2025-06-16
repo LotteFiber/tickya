@@ -3,6 +3,7 @@
 import { useActionState } from "react";
 import { LucideLoaderCircle } from "lucide-react";
 import { useFormStatus } from "react-dom";
+import { FieldError } from "@/components/form/field-error";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -34,6 +35,7 @@ const TickyaUpsertForm = ({ tickya }: TickyaUpsertFormProps) => {
     upsertTickya.bind(null, tickya?.id),
     {
       message: "",
+      fieldError: {},
     }
   );
   const StatusRadioGroup = () => (
@@ -60,6 +62,7 @@ const TickyaUpsertForm = ({ tickya }: TickyaUpsertFormProps) => {
           <Label htmlFor="status-done">DONE</Label>
         </span>
       </RadioGroup>
+      <FieldError actionState={actionState} name="status" />
     </>
   );
 
@@ -88,6 +91,7 @@ const TickyaUpsertForm = ({ tickya }: TickyaUpsertFormProps) => {
           <Label htmlFor="department-oneStop">One Stop</Label>
         </span>
       </RadioGroup>
+      <FieldError actionState={actionState} name="department" />
     </>
   );
 
@@ -102,6 +106,7 @@ const TickyaUpsertForm = ({ tickya }: TickyaUpsertFormProps) => {
         type="text"
         defaultValue={(actionState.payload?.get("HN") as string) ?? tickya?.HN}
       />
+      <FieldError actionState={actionState} name="HN" />
 
       <Label htmlFor="patientName">Patient Name</Label>
       <Input
@@ -113,6 +118,7 @@ const TickyaUpsertForm = ({ tickya }: TickyaUpsertFormProps) => {
           tickya?.patientName
         }
       />
+      <FieldError actionState={actionState} name="patientName" />
 
       <Label htmlFor="AN">AN</Label>
       <Input
@@ -121,6 +127,7 @@ const TickyaUpsertForm = ({ tickya }: TickyaUpsertFormProps) => {
         type="text"
         defaultValue={(actionState.payload?.get("AN") as string) ?? tickya?.AN}
       />
+      <FieldError actionState={actionState} name="AN" />
 
       <DepartmentRadioGroup />
 
@@ -133,10 +140,9 @@ const TickyaUpsertForm = ({ tickya }: TickyaUpsertFormProps) => {
           tickya?.description
         }
       />
+      <FieldError actionState={actionState} name="description" />
 
       <SubmitButton label={tickya ? "Edit" : "Create"} />
-
-      {actionState.message}
     </form>
   );
 };
