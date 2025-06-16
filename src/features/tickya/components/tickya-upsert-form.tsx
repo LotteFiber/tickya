@@ -1,3 +1,7 @@
+"use client";
+
+import { LucideLoaderCircle } from "lucide-react";
+import { useFormStatus } from "react-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -10,15 +14,29 @@ type TickyaUpsertFormProps = {
   tickya?: Tickya;
 };
 
+type SubmitButtonProps = {
+  label: string;
+};
+
+const SubmitButton = ({ label }: SubmitButtonProps) => {
+  const { pending } = useFormStatus();
+  return (
+    <Button disabled={pending} type="submit" className="mt-2">
+      {pending && <LucideLoaderCircle className="h-4 w-4 animate-spin" />}
+      {label}
+    </Button>
+  );
+};
+
 const TickyaUpsertForm = ({ tickya }: TickyaUpsertFormProps) => {
   const StatusRadioGroup = () => (
     <>
       <Label htmlFor="status">Status</Label>
       <RadioGroup
-        defaultValue="OPEN"
         name="status"
         id="status"
         className="flex flex-col gap-2"
+        defaultValue={tickya?.status}
       >
         <span className="flex items-center space-x-2">
           <RadioGroupItem value="OPEN" id="status-open" />
@@ -40,10 +58,10 @@ const TickyaUpsertForm = ({ tickya }: TickyaUpsertFormProps) => {
     <>
       <Label htmlFor="department">Department</Label>
       <RadioGroup
-        defaultValue="OPD"
         name="department"
         id="department"
         className="flex flex-col gap-2"
+        defaultValue={tickya?.department}
       >
         <span className="flex items-center space-x-2">
           <RadioGroupItem value="OPD" id="department-opd" />
@@ -91,9 +109,7 @@ const TickyaUpsertForm = ({ tickya }: TickyaUpsertFormProps) => {
         defaultValue={tickya?.description}
       />
 
-      <Button type="submit" className="mt-2">
-        Update
-      </Button>
+      <SubmitButton label={tickya ? "Edit" : "Create"} />
     </form>
   );
 };
