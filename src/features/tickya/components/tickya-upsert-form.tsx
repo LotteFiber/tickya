@@ -3,6 +3,7 @@
 import { useActionState } from "react";
 import { LucideLoaderCircle } from "lucide-react";
 import { useFormStatus } from "react-dom";
+import { toast } from "sonner";
 import { FieldError } from "@/components/form/field-error";
 import { useActionFeedback } from "@/components/form/hooks/use-action-feedback";
 import { EMPTY_ACTION_STATE } from "@/components/form/utils/to-action-state";
@@ -40,10 +41,14 @@ const TickyaUpsertForm = ({ tickya }: TickyaUpsertFormProps) => {
 
   useActionFeedback(actionState, {
     onSuccess: ({ actionState }) => {
-      console.log(actionState.message);
+      if (actionState.message) {
+        toast.success(actionState.message);
+      }
     },
     onError: ({ actionState }) => {
-      console.log(actionState.message);
+      if (actionState.message) {
+        toast.error(actionState.message);
+      }
     },
   });
 
