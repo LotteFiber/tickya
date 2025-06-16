@@ -43,7 +43,9 @@ const TickyaUpsertForm = ({ tickya }: TickyaUpsertFormProps) => {
         name="status"
         id="status"
         className="flex flex-col gap-2"
-        defaultValue={tickya?.status}
+        defaultValue={
+          (actionState.payload?.get("status") as string) ?? tickya?.status
+        }
       >
         <span className="flex items-center space-x-2">
           <RadioGroupItem value="OPEN" id="status-open" />
@@ -68,7 +70,10 @@ const TickyaUpsertForm = ({ tickya }: TickyaUpsertFormProps) => {
         name="department"
         id="department"
         className="flex flex-col gap-2"
-        defaultValue={tickya?.department}
+        defaultValue={
+          (actionState.payload?.get("department") as string) ??
+          tickya?.department
+        }
       >
         <span className="flex items-center space-x-2">
           <RadioGroupItem value="OPD" id="department-opd" />
@@ -91,18 +96,31 @@ const TickyaUpsertForm = ({ tickya }: TickyaUpsertFormProps) => {
       <StatusRadioGroup />
 
       <Label htmlFor="HN">HN</Label>
-      <Input id="HN" name="HN" type="text" defaultValue={tickya?.HN} />
+      <Input
+        id="HN"
+        name="HN"
+        type="text"
+        defaultValue={(actionState.payload?.get("HN") as string) ?? tickya?.HN}
+      />
 
       <Label htmlFor="patientName">Patient Name</Label>
       <Input
         id="patientName"
         name="patientName"
         type="text"
-        defaultValue={tickya?.patientName}
+        defaultValue={
+          (actionState.payload?.get("patientName") as string) ??
+          tickya?.patientName
+        }
       />
 
       <Label htmlFor="AN">AN</Label>
-      <Input id="AN" name="AN" type="text" defaultValue={tickya?.AN} />
+      <Input
+        id="AN"
+        name="AN"
+        type="text"
+        defaultValue={(actionState.payload?.get("AN") as string) ?? tickya?.AN}
+      />
 
       <DepartmentRadioGroup />
 
@@ -110,7 +128,10 @@ const TickyaUpsertForm = ({ tickya }: TickyaUpsertFormProps) => {
       <Textarea
         id="description"
         name="description"
-        defaultValue={tickya?.description}
+        defaultValue={
+          (actionState.payload?.get("description") as string) ??
+          tickya?.description
+        }
       />
 
       <SubmitButton label={tickya ? "Edit" : "Create"} />
