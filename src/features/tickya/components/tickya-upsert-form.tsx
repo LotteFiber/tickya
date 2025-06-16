@@ -3,9 +3,8 @@
 import { useActionState } from "react";
 import { LucideLoaderCircle } from "lucide-react";
 import { useFormStatus } from "react-dom";
-import { toast } from "sonner";
 import { FieldError } from "@/components/form/field-error";
-import { useActionFeedback } from "@/components/form/hooks/use-action-feedback";
+import { Form } from "@/components/form/form";
 import { EMPTY_ACTION_STATE } from "@/components/form/utils/to-action-state";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -38,19 +37,6 @@ const TickyaUpsertForm = ({ tickya }: TickyaUpsertFormProps) => {
     upsertTickya.bind(null, tickya?.id),
     EMPTY_ACTION_STATE
   );
-
-  useActionFeedback(actionState, {
-    onSuccess: ({ actionState }) => {
-      if (actionState.message) {
-        toast.success(actionState.message);
-      }
-    },
-    onError: ({ actionState }) => {
-      if (actionState.message) {
-        toast.error(actionState.message);
-      }
-    },
-  });
 
   const StatusRadioGroup = () => (
     <>
@@ -110,7 +96,7 @@ const TickyaUpsertForm = ({ tickya }: TickyaUpsertFormProps) => {
   );
 
   return (
-    <form action={action} className="mt-2 flex flex-col gap-y-2">
+    <Form action={action} actionState={actionState}>
       <StatusRadioGroup />
 
       <Label htmlFor="HN">HN</Label>
@@ -157,7 +143,7 @@ const TickyaUpsertForm = ({ tickya }: TickyaUpsertFormProps) => {
       <FieldError actionState={actionState} name="description" />
 
       <SubmitButton label={tickya ? "Edit" : "Create"} />
-    </form>
+    </Form>
   );
 };
 
