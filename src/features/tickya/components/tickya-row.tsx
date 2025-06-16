@@ -45,7 +45,7 @@ const TickyaRowActions = ({ tickya, tickyaId }: TickyaRowActionsProps) => {
         <DialogContent>
           <DialogHeader>
             <DialogTitle>Edit Record</DialogTitle>
-            <DialogDescription>
+            <DialogDescription asChild>
               <TickyaUpsertForm tickya={tickya} />
             </DialogDescription>
           </DialogHeader>

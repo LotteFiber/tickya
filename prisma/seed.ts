@@ -8,7 +8,7 @@ const tickyaData: Prisma.TickyaCreateInput[] = [
     status: "DONE" as const,
     HN: "000120045",
     patientName: "Michael Thompson",
-    AN: "AN00014001",
+    AN: "000114001",
     department: "IPD" as const,
     description:
       "Dispensed: Paracetamol 500mg x 10 tablets. Patient received medication at bedside. Verified by nurse before discharge.",
@@ -18,7 +18,7 @@ const tickyaData: Prisma.TickyaCreateInput[] = [
     status: "OPEN" as const,
     HN: "000120089",
     patientName: "Suphansa Rattanakul",
-    AN: "AN00014002",
+    AN: "000114002",
     department: "OPD" as const,
     description:
       "Pending dispensing. Prescription includes Amoxicillin 500mg x 21 capsules. Waiting for pharmacist verification.",
@@ -28,7 +28,7 @@ const tickyaData: Prisma.TickyaCreateInput[] = [
     status: "IN_PROGRESS" as const,
     HN: "000120065",
     patientName: "Anan Phongchai",
-    AN: "AN00014003",
+    AN: "000114003",
     department: "OneStop" as const,
     description:
       "Currently dispensing: Ibuprofen 200mg x 15 tablets. Patient identity verified. Labeling in progress.",

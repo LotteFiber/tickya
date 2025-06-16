@@ -22,7 +22,7 @@ const TickyasPage = () => {
       <DialogContent>
         <DialogHeader>
           <DialogTitle>A new record will be created</DialogTitle>
-          <DialogDescription>
+          <DialogDescription asChild>
             <TickyaUpsertForm />
           </DialogDescription>
         </DialogHeader>
