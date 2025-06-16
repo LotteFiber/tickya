@@ -6,11 +6,17 @@ import prisma from "@/lib/prisma";
 import {
   ActionState,
   fromErrorToActionState,
+  toActionState,
 } from "@/components/form/utils/to-action-state";
 import { tickyasPath } from "@/paths";
 
 const upsertTickyaSchema = z.object({
-  status: z.enum(["OPEN", "IN_PROGRESS", "DONE"]),
+  status: z.preprocess(
+    (val) => (val === "" ? undefined : val),
+    z.enum(["OPEN", "IN_PROGRESS", "DONE"], {
+      errorMap: () => ({ message: "Please select a status." }),
+    })
+  ),
   HN: z.string().refine((val) => /^\d{9}$/.test(val), {
     message: "The HN number must have 9 digits.",
   }),
@@ -18,7 +24,12 @@ const upsertTickyaSchema = z.object({
   AN: z.string().refine((val) => /^\d{9}$/.test(val), {
     message: "The AN number must have 9 digits.",
   }),
-  department: z.enum(["OPD", "IPD", "OneStop"]),
+  department: z.preprocess(
+    (val) => (val === "" ? undefined : val),
+    z.enum(["OPD", "IPD", "OneStop"], {
+      errorMap: () => ({ message: "Please select a department." }),
+    })
+  ),
   description: z.string().optional(),
 });
 
@@ -53,10 +64,10 @@ export const upsertTickya = async (
     revalidatePath(tickyasPath());
 
     if (id) {
-      return { message: "Record has edited", fieldError: {} };
+      return toActionState("SUCCESS", "Record has edited");
     }
 
-    return { message: "Record created", fieldError: {} };
+    return toActionState("SUCCESS", "Record created");
   } catch (error) {
     return fromErrorToActionState(error, formData);
   }
