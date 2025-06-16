@@ -16,6 +16,7 @@ type TickyaForm = {
 
 export const upsertTickya = async (
   id: string | undefined,
+  _actionState: { message: string },
   formData: FormData
 ) => {
   const data: TickyaForm = {
@@ -36,4 +37,10 @@ export const upsertTickya = async (
   });
 
   revalidatePath(tickyasPath());
+
+  if (id) {
+    return { message: "Record has edited" };
+  }
+
+  return { message: "Record created" };
 };

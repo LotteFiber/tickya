@@ -1,5 +1,6 @@
 "use client";
 
+import { useActionState } from "react";
 import { LucideLoaderCircle } from "lucide-react";
 import { useFormStatus } from "react-dom";
 import { Button } from "@/components/ui/button";
@@ -29,6 +30,12 @@ const SubmitButton = ({ label }: SubmitButtonProps) => {
 };
 
 const TickyaUpsertForm = ({ tickya }: TickyaUpsertFormProps) => {
+  const [actionState, action] = useActionState(
+    upsertTickya.bind(null, tickya?.id),
+    {
+      message: "",
+    }
+  );
   const StatusRadioGroup = () => (
     <>
       <Label htmlFor="status">Status</Label>
@@ -80,10 +87,7 @@ const TickyaUpsertForm = ({ tickya }: TickyaUpsertFormProps) => {
   );
 
   return (
-    <form
-      action={upsertTickya.bind(null, tickya?.id)}
-      className="mt-2 flex flex-col gap-y-2"
-    >
+    <form action={action} className="mt-2 flex flex-col gap-y-2">
       <StatusRadioGroup />
 
       <Label htmlFor="HN">HN</Label>
@@ -110,6 +114,8 @@ const TickyaUpsertForm = ({ tickya }: TickyaUpsertFormProps) => {
       />
 
       <SubmitButton label={tickya ? "Edit" : "Create"} />
+
+      {actionState.message}
     </form>
   );
 };
