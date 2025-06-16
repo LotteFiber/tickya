@@ -10,8 +10,8 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { TickyaCreateForm } from "@/features/tickya/components/tickya-create-form";
 import { TickyaTable } from "@/features/tickya/components/tickya-table";
+import { TickyaUpsertForm } from "@/features/tickya/components/tickya-upsert-form";
 
 const TickyasPage = () => {
   const createButton = (
@@ -23,7 +23,7 @@ const TickyasPage = () => {
         <DialogHeader>
           <DialogTitle>A new record will be created</DialogTitle>
           <DialogDescription>
-            <TickyaCreateForm />
+            <TickyaUpsertForm />
           </DialogDescription>
         </DialogHeader>
       </DialogContent>

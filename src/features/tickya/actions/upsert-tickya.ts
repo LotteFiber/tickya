@@ -14,7 +14,10 @@ type TickyaForm = {
   description: string;
 };
 
-export const updateTickya = async (id: string, formData: FormData) => {
+export const upsertTickya = async (
+  id: string | undefined,
+  formData: FormData
+) => {
   const data: TickyaForm = {
     status: formData.get("status") as TickyaStatus,
     HN: String(formData.get("HN") || "").trim(),
@@ -24,11 +27,12 @@ export const updateTickya = async (id: string, formData: FormData) => {
     description: String(formData.get("description") || "").trim(),
   };
 
-  await prisma.tickya.update({
+  await prisma.tickya.upsert({
     where: {
-      id,
+      id: id || "",
     },
-    data,
+    update: data,
+    create: data,
   });
 
   revalidatePath(tickyasPath());

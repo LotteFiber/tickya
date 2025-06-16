@@ -3,19 +3,19 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Textarea } from "@/components/ui/textarea";
-import { updateTickya } from "../actions/update-tickya";
+import { upsertTickya } from "../actions/upsert-tickya";
 import { Tickya } from "../type";
 
-type TickyaUpdateFormProps = {
-  tickya: Tickya;
+type TickyaUpsertFormProps = {
+  tickya?: Tickya;
 };
 
-const TickyaUpdateForm = ({ tickya }: TickyaUpdateFormProps) => {
+const TickyaUpsertForm = ({ tickya }: TickyaUpsertFormProps) => {
   const StatusRadioGroup = () => (
     <>
       <Label htmlFor="status">Status</Label>
       <RadioGroup
-        defaultValue={tickya.status}
+        defaultValue="OPEN"
         name="status"
         id="status"
         className="flex flex-col gap-2"
@@ -40,7 +40,7 @@ const TickyaUpdateForm = ({ tickya }: TickyaUpdateFormProps) => {
     <>
       <Label htmlFor="department">Department</Label>
       <RadioGroup
-        defaultValue={tickya.department}
+        defaultValue="OPD"
         name="department"
         id="department"
         className="flex flex-col gap-2"
@@ -63,24 +63,24 @@ const TickyaUpdateForm = ({ tickya }: TickyaUpdateFormProps) => {
 
   return (
     <form
-      action={updateTickya.bind(null, tickya.id)}
+      action={upsertTickya.bind(null, tickya?.id)}
       className="mt-2 flex flex-col gap-y-2"
     >
       <StatusRadioGroup />
 
       <Label htmlFor="HN">HN</Label>
-      <Input id="HN" name="HN" type="text" defaultValue={tickya.HN} />
+      <Input id="HN" name="HN" type="text" defaultValue={tickya?.HN} />
 
       <Label htmlFor="patientName">Patient Name</Label>
       <Input
         id="patientName"
         name="patientName"
         type="text"
-        defaultValue={tickya.patientName}
+        defaultValue={tickya?.patientName}
       />
 
       <Label htmlFor="AN">AN</Label>
-      <Input id="AN" name="AN" type="text" defaultValue={tickya.AN} />
+      <Input id="AN" name="AN" type="text" defaultValue={tickya?.AN} />
 
       <DepartmentRadioGroup />
 
@@ -88,7 +88,7 @@ const TickyaUpdateForm = ({ tickya }: TickyaUpdateFormProps) => {
       <Textarea
         id="description"
         name="description"
-        defaultValue={tickya.description}
+        defaultValue={tickya?.description}
       />
 
       <Button type="submit" className="mt-2">
@@ -98,4 +98,4 @@ const TickyaUpdateForm = ({ tickya }: TickyaUpdateFormProps) => {
   );
 };
 
-export { TickyaUpdateForm };
+export { TickyaUpsertForm };

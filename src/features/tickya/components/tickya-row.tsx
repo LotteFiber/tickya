@@ -18,7 +18,7 @@ import {
 import { tickyaPath } from "@/paths";
 import { deleteTickya } from "../actions/delete-tickya";
 import { Tickya } from "../type";
-import { TickyaUpdateForm } from "./tickya-update-form";
+import { TickyaUpsertForm } from "./tickya-upsert-form";
 
 type TickyaRowActionsProps = {
   tickya: Tickya;
@@ -46,7 +46,7 @@ const TickyaRowActions = ({ tickya, tickyaId }: TickyaRowActionsProps) => {
           <DialogHeader>
             <DialogTitle>Edit Record</DialogTitle>
             <DialogDescription>
-              <TickyaUpdateForm tickya={tickya} />
+              <TickyaUpsertForm tickya={tickya} />
             </DialogDescription>
           </DialogHeader>
         </DialogContent>
