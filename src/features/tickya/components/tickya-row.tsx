@@ -26,8 +26,6 @@ type TickyaRowActionsProps = {
 };
 
 const TickyaRowActions = ({ tickya, tickyaId }: TickyaRowActionsProps) => {
-  const handleClick = () => console.log("Edit", tickyaId);
-
   return (
     <>
       <Button variant="outline" size="icon" asChild>
@@ -38,17 +36,18 @@ const TickyaRowActions = ({ tickya, tickyaId }: TickyaRowActionsProps) => {
 
       <Dialog>
         <DialogTrigger asChild>
-          <Button variant="outline" size="icon" onClick={handleClick}>
+          <Button variant="outline" size="icon">
             <LucidePen className="h-4 w-4" />
           </Button>
         </DialogTrigger>
         <DialogContent>
           <DialogHeader>
             <DialogTitle>Edit Record</DialogTitle>
-            <DialogDescription asChild>
-              <TickyaUpsertForm tickya={tickya} />
+            <DialogDescription>
+              Update the details for this record.
             </DialogDescription>
           </DialogHeader>
+          <TickyaUpsertForm tickya={tickya} />
         </DialogContent>
       </Dialog>
 

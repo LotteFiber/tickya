@@ -22,10 +22,11 @@ const TickyasPage = () => {
       <DialogContent>
         <DialogHeader>
           <DialogTitle>A new record will be created</DialogTitle>
-          <DialogDescription asChild>
-            <TickyaUpsertForm />
+          <DialogDescription>
+            Fill out the form below to create a new record.
           </DialogDescription>
         </DialogHeader>
+        <TickyaUpsertForm />
       </DialogContent>
     </Dialog>
   );
