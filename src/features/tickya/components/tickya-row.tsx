@@ -1,11 +1,14 @@
 "use client";
 
+import { useTransition } from "react";
 import Link from "next/link";
 import {
   LucideArrowUpRightFromSquare,
+  LucideLoaderCircle,
   LucidePen,
   LucideTrash,
 } from "lucide-react";
+import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -26,6 +29,20 @@ type TickyaRowActionsProps = {
 };
 
 const TickyaRowActions = ({ tickya, tickyaId }: TickyaRowActionsProps) => {
+  const [isPending, startTransition] = useTransition();
+
+  const handleDelete = () => {
+    startTransition(async () => {
+      try {
+        await deleteTickya(tickyaId);
+        toast.success("Ticket deleted");
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      } catch (err) {
+        toast.error("Failed to delete");
+      }
+    });
+  };
+
   return (
     <>
       <Button variant="outline" size="icon" asChild>
@@ -51,12 +68,19 @@ const TickyaRowActions = ({ tickya, tickyaId }: TickyaRowActionsProps) => {
         </DialogContent>
       </Dialog>
 
-      <form action={deleteTickya}>
-        <input type="hidden" name="id" value={tickyaId} />
-        <Button variant="destructive" size="icon" type="submit">
+      <Button
+        variant="destructive"
+        size="icon"
+        type="submit"
+        onClick={handleDelete}
+        disabled={isPending}
+      >
+        {isPending ? (
+          <LucideLoaderCircle className="h-4 w-4 animate-spin" />
+        ) : (
           <LucideTrash className="h-4 w-4" />
-        </Button>
-      </form>
+        )}
+      </Button>
     </>
   );
 };
