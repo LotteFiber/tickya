@@ -9,6 +9,7 @@ import {
   LucideTrash,
 } from "lucide-react";
 import { toast } from "sonner";
+import { ConfirmDialog } from "@/components/confirm-dialog";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -36,9 +37,8 @@ const TickyaRowActions = ({ tickya, tickyaId }: TickyaRowActionsProps) => {
       try {
         await deleteTickya(tickyaId);
         toast.success("Ticket deleted");
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
       } catch (err) {
-        toast.error("Failed to delete");
+        toast.error(`Failed to delete: ${err}`);
       }
     });
   };
@@ -68,19 +68,23 @@ const TickyaRowActions = ({ tickya, tickyaId }: TickyaRowActionsProps) => {
         </DialogContent>
       </Dialog>
 
-      <Button
-        variant="destructive"
-        size="icon"
-        type="submit"
-        onClick={handleDelete}
-        disabled={isPending}
-      >
-        {isPending ? (
-          <LucideLoaderCircle className="h-4 w-4 animate-spin" />
-        ) : (
-          <LucideTrash className="h-4 w-4" />
-        )}
-      </Button>
+      <ConfirmDialog
+        action={handleDelete}
+        trigger={
+          <Button
+            variant="destructive"
+            size="icon"
+            type="submit"
+            disabled={isPending}
+          >
+            {isPending ? (
+              <LucideLoaderCircle className="h-4 w-4 animate-spin" />
+            ) : (
+              <LucideTrash className="h-4 w-4" />
+            )}
+          </Button>
+        }
+      />
     </>
   );
 };
