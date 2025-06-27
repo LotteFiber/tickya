@@ -36,7 +36,7 @@ const TickyaRowActions = ({ tickya, tickyaId }: TickyaRowActionsProps) => {
     startTransition(async () => {
       try {
         await deleteTickya(tickyaId);
-        toast.success("Tickya deleted");
+        toast.success("Record deleted");
       } catch (err) {
         toast.error(`Failed to delete: ${err}`);
       }
