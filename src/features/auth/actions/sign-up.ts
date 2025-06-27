@@ -10,6 +10,7 @@ import {
 import { setSessionCookie } from "@/auth/cookie";
 import { createSession } from "@/auth/session";
 import { hashPassword } from "@/features/password/utils/hash-and-verify";
+import { Prisma } from "@/prisma/generated/client";
 import { generateRandomToken } from "@/utils/crypto";
 
 const signUpSchema = z
@@ -57,6 +58,17 @@ export const signUp = async (_actionState: ActionState, formData: FormData) => {
 
     await setSessionCookie(sessionToken, session.expiresAt);
   } catch (error) {
+    if (
+      error instanceof Prisma.PrismaClientKnownRequestError &&
+      error.code === "P2002"
+    ) {
+      return toActionState(
+        "ERROR",
+        "Either email or username is already in use",
+        formData
+      );
+    }
+
     return fromErrorToActionState(error, formData);
   }
 
