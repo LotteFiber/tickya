@@ -36,7 +36,7 @@ const TickyaRowActions = ({ tickya, tickyaId }: TickyaRowActionsProps) => {
     startTransition(async () => {
       try {
         await deleteTickya(tickyaId);
-        toast.success("Ticket deleted");
+        toast.success("Tickya deleted");
       } catch (err) {
         toast.error(`Failed to delete: ${err}`);
       }
@@ -46,7 +46,7 @@ const TickyaRowActions = ({ tickya, tickyaId }: TickyaRowActionsProps) => {
   return (
     <>
       <Button variant="outline" size="icon" asChild>
-        <Link href={tickyaPath(tickyaId)}>
+        <Link prefetch href={tickyaPath(tickyaId)}>
           <LucideArrowUpRightFromSquare className="h-4 w-4" />
         </Link>
       </Button>
