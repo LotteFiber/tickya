@@ -13,7 +13,7 @@ import {
 import { TickyaTable } from "@/features/tickya/components/tickya-table";
 import { TickyaUpsertForm } from "@/features/tickya/components/tickya-upsert-form";
 
-const TickyasPage = () => {
+const TickyasPage = async () => {
   const createButton = (
     <Dialog>
       <DialogTrigger asChild>
