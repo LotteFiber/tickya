@@ -40,7 +40,7 @@ const Header = () => {
   );
 
   return (
-    <nav className="supports-backdrop-blur:bg-background/60 bg-background/95 backgdrop-blur w-ful fixed top-0 right-0 left-0 z-20 flex justify-between gap-x-4 border-b px-5 py-2.5">
+    <nav className="animate-header-from-top supports-backdrop-blur:bg-background/60 bg-background/95 backgdrop-blur w-ful fixed top-0 right-0 left-0 z-20 flex justify-between gap-x-4 border-b px-5 py-2.5">
       <div className="flex gap-x-4">
         <div className="flex items-center justify-center gap-x-2">
           {cloneElement(<LucidePill />, {
