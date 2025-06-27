@@ -8,12 +8,13 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { Tickya } from "@/generated/prisma";
 import { TICKYA_ICONS } from "../constants";
 import { getTickyas } from "../queries/get-tickyas";
 import { TickyaRowActions } from "./tickya-row";
 
 const TickyaTable = async () => {
-  const tickyas = await getTickyas();
+  const tickyas: Tickya[] = await getTickyas();
 
   return (
     <Table className="animate-fade-in-from-top">

@@ -3,7 +3,7 @@ import {
   encodeBase32LowerCaseNoPadding,
   encodeHexLowerCase,
 } from "@oslojs/encoding";
-import prisma from "@/lib/prisma";
+import { prisma } from "@/lib/prisma";
 
 export const generateRandomSessionToken = () => {
   const bytes = new Uint8Array(20);

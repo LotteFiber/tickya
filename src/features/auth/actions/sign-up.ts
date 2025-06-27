@@ -1,7 +1,7 @@
 "use server";
 
 import z from "zod";
-import prisma from "@/lib/prisma";
+import { prisma } from "@/lib/prisma";
 import {
   ActionState,
   fromErrorToActionState,
@@ -10,7 +10,7 @@ import {
 import { setSessionCookie } from "@/auth/cookie";
 import { createSession } from "@/auth/session";
 import { hashPassword } from "@/features/password/utils/hash-and-verify";
-import { Prisma } from "@/prisma/generated/client";
+import { Prisma } from "@/generated/prisma";
 import { generateRandomToken } from "@/utils/crypto";
 
 const signUpSchema = z

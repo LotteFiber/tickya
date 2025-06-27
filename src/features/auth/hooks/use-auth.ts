@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-import { User } from "@/prisma/generated/client";
+import { User } from "@/generated/prisma";
 import { getAuth } from "../queries/get-auth";
 
 const useAuth = () => {
