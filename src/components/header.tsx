@@ -3,11 +3,20 @@ import Link from "next/link";
 import { LucideLogOut, LucidePill } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
 import { signOut } from "@/features/auth/actions/sign-out";
+import { getAuth } from "@/features/auth/queries/get-auth";
 import { homePath, signInPath, signUpPath, tickyasPath } from "@/paths";
 import { SubmitButton } from "./form/submit-button";
 
-const Header = () => {
-  const navItems = (
+const Header = async () => {
+  const { user } = await getAuth();
+
+  const navItems = user ? (
+    <>
+      <form action={signOut}>
+        <SubmitButton label="Sign Out" icon={<LucideLogOut />} />
+      </form>
+    </>
+  ) : (
     <>
       <Link
         href={signUpPath()}
@@ -21,11 +30,9 @@ const Header = () => {
       >
         Sign In
       </Link>
-      <form action={signOut}>
-        <SubmitButton label="Sign Out" icon={<LucideLogOut />} />
-      </form>
     </>
   );
+
   return (
     <nav className="supports-backdrop-blur:bg-background/60 bg-background/95 backgdrop-blur w-ful fixed top-0 right-0 left-0 z-20 flex justify-between gap-x-4 border-b px-5 py-2.5">
       <div className="flex gap-x-4">
