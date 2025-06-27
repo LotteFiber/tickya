@@ -43,9 +43,7 @@ const SubmitButton = ({
             "ml-2": !!label,
           })}
         >
-          {cloneElement(icon, {
-            className: "w-4 h-4",
-          })}
+          {cloneElement(icon)}
         </span>
       ) : null}
     </Button>
