@@ -18,8 +18,11 @@ importers:
         specifier: ^1.1.0
         version: 1.1.0
       '@prisma/client':
-        specifier: ^6.10.1
+        specifier: 6.10.1
         version: 6.10.1(prisma@6.10.1(typescript@5.8.3))(typescript@5.8.3)
+      '@prisma/nextjs-monorepo-workaround-plugin':
+        specifier: ^6.10.1
+        version: 6.10.1
       '@radix-ui/react-alert-dialog':
         specifier: ^1.1.14
         version: 1.1.14(@types/react-dom@19.1.6(@types/react@19.1.8))(@types/react@19.1.8)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -745,6 +748,9 @@ packages:
 
   '@prisma/get-platform@6.10.1':
     resolution: {integrity: sha512-4CY5ndKylcsce9Mv+VWp5obbR2/86SHOLVV053pwIkhVtT9C9A83yqiqI/5kJM9T1v1u1qco/bYjDKycmei9HA==}
+
+  '@prisma/nextjs-monorepo-workaround-plugin@6.10.1':
+    resolution: {integrity: sha512-pXIbLTdPlCtoWGngBxdYRWe719PNZrQ44FVT0HBcw0B1SY2I7gPgC9EqlvBoNgX2cBSGO27yZvSirKPxYZd76w==}
 
   '@radix-ui/primitive@1.1.2':
     resolution: {integrity: sha512-XnbHrrprsNqZKQhStrSwgRUQzoCI1glLzdw79xiZPoofhGICeZRSQ3dIxAKH1gb3OHfNf4d6f+vAv3kil2eggA==}
@@ -3235,6 +3241,8 @@ snapshots:
   '@prisma/get-platform@6.10.1':
     dependencies:
       '@prisma/debug': 6.10.1
+
+  '@prisma/nextjs-monorepo-workaround-plugin@6.10.1': {}
 
   '@radix-ui/primitive@1.1.2': {}
 

@@ -1,7 +1,7 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import prisma from "@/lib/prisma";
+import { prisma } from "@/lib/prisma";
 import { tickyasPath } from "@/paths";
 
 export const deleteTickya = async (id: string) => {

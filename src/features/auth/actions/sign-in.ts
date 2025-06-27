@@ -3,7 +3,7 @@
 import { redirect } from "next/navigation";
 import { verify } from "@node-rs/argon2";
 import z from "zod";
-import prisma from "@/lib/prisma";
+import { prisma } from "@/lib/prisma";
 import {
   ActionState,
   fromErrorToActionState,
