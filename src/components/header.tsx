@@ -1,14 +1,20 @@
+"use client";
+
 import { cloneElement } from "react";
 import Link from "next/link";
 import { LucideLogOut, LucidePill } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
 import { signOut } from "@/features/auth/actions/sign-out";
-import { getAuth } from "@/features/auth/queries/get-auth";
+import { useAuth } from "@/features/auth/hooks/use-auth";
 import { homePath, signInPath, signUpPath, tickyasPath } from "@/paths";
 import { SubmitButton } from "./form/submit-button";
 
-const Header = async () => {
-  const { user } = await getAuth();
+const Header = () => {
+  const { user, isFetched } = useAuth();
+
+  if (!isFetched) {
+    return null;
+  }
 
   const navItems = user ? (
     <>
