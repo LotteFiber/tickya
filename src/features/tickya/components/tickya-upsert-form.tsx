@@ -17,7 +17,7 @@ type TickyaUpsertFormProps = {
 };
 
 const TickyaUpsertForm = ({ tickya }: TickyaUpsertFormProps) => {
-  const [actionState, action] = useActionState(
+  const [actionState, action, pending] = useActionState(
     upsertTickya.bind(null, tickya?.id),
     EMPTY_ACTION_STATE
   );
@@ -133,7 +133,7 @@ const TickyaUpsertForm = ({ tickya }: TickyaUpsertFormProps) => {
       />
       <FieldError actionState={actionState} name="description" />
 
-      <SubmitButton label={tickya ? "Edit" : "Create"} />
+      <SubmitButton label={tickya ? "Edit" : "Create"} pending={pending} />
     </Form>
   );
 };
