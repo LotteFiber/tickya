@@ -1,4 +1,5 @@
 import { Suspense } from "react";
+import { redirect } from "next/navigation";
 import { Heading } from "@/components/heading";
 import { Spinner } from "@/components/spinner";
 import { Button } from "@/components/ui/button";
@@ -10,10 +11,18 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { getAuth } from "@/features/auth/queries/get-auth";
 import { TickyaTable } from "@/features/tickya/components/tickya-table";
 import { TickyaUpsertForm } from "@/features/tickya/components/tickya-upsert-form";
+import { signInPath } from "@/paths";
 
 const TickyasPage = async () => {
+  const { user } = await getAuth();
+
+  if (!user) {
+    redirect(signInPath());
+  }
+
   const createButton = (
     <Dialog>
       <DialogTrigger asChild>
