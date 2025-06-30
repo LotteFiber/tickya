@@ -66,6 +66,7 @@
 @theme {
   --animate-fade-in-from-top: fade-in-from-top 0.5s ease-out;
   --animate-header-from-top: header-from-top 0.5s ease-out;
+  --animate-sidebar-from-left: sidebar-from-left 0.5s ease-out;
 
   @keyframes fade-in-from-top {
     0% {
@@ -84,6 +85,15 @@
     }
     100% {
       transform: translateY(0);
+    }
+  }
+
+  @keyframes sidebar-from-left {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(0);
     }
   }
 }
@@ -141,6 +151,10 @@ body {
   --shadow-xl:
     0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 8px 10px -1px hsl(0 0% 0% / 0.1);
   --shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.25);
+
+  .has-\[\>svg\]\:px-3:has(> svg) {
+    padding-inline: calc(var(--spacing) * 4.5);
+  }
 }
 
 .dark {
@@ -192,6 +206,10 @@ body {
   --shadow-xl:
     0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 8px 10px -1px hsl(0 0% 0% / 0.1);
   --shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.25);
+
+  .has-\[\>svg\]\:px-3:has(> svg) {
+    padding-inline: calc(var(--spacing) * 4.5);
+  }
 }
 
 @layer base {

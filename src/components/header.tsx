@@ -6,7 +6,7 @@ import { LucideLogOut, LucidePill } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
 import { signOut } from "@/features/auth/actions/sign-out";
 import { useAuth } from "@/features/auth/hooks/use-auth";
-import { homePath, signInPath, signUpPath, tickyasPath } from "@/paths";
+import { signInPath, signUpPath } from "@/paths";
 import { SubmitButton } from "./form/submit-button";
 
 const Header = () => {
@@ -49,22 +49,6 @@ const Header = () => {
           <h1 className="text-primary text-xl font-bold tracking-wide">
             Tickya
           </h1>
-        </div>
-        <div>
-          <Link
-            href={homePath()}
-            className={buttonVariants({ variant: "outline" })}
-          >
-            Home
-          </Link>
-        </div>
-        <div>
-          <Link
-            href={tickyasPath()}
-            className={buttonVariants({ variant: "outline" })}
-          >
-            Record
-          </Link>
         </div>
       </div>
       <div className="flex gap-x-4">{navItems}</div>
