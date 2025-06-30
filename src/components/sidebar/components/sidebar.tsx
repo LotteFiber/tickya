@@ -1,13 +1,17 @@
 "use client";
 
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { useAuth } from "@/features/auth/hooks/use-auth";
 import { navItems } from "../constants";
 import { SidebarItem } from "./sidebar-item";
 
 const Sidebar = () => {
+  const pathname = usePathname();
   const { user, isFetched } = useAuth();
+
+  const hiddenPaths = ["/sign-in", "sign-up"];
 
   const [isTransition, setTransition] = useState(false);
   const [isOpen, setOpen] = useState(false);
@@ -18,7 +22,7 @@ const Sidebar = () => {
     setTimeout(() => setTransition(false), 200);
   };
 
-  if (!user || !isFetched) {
+  if (!user || !isFetched || hiddenPaths.includes(pathname)) {
     return null;
   }
 
