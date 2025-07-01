@@ -17,6 +17,7 @@ const SidebarItem = ({ isOpen, navItem }: SidebarItemProps) => {
 
   return (
     <Link
+      prefetch
       href={navItem.href}
       className={cn(
         buttonVariants({ variant: "ghost" }),

@@ -103,6 +103,155 @@ const tickyaData: Prisma.TickyaCreateInput[] = [
     description:
       "Completed dispensing: Omeprazole 20mg x 14 capsules. Patient educated on empty stomach intake.",
   },
+  {
+    id: "11",
+    status: "OPEN" as const,
+    HN: "000120226",
+    patientName: "Chatchai Yodkaew",
+    AN: "000114011",
+    department: "IPD" as const,
+    description:
+      "Prescription received. Enalapril 5mg x 30 tablets. Pending pharmacist approval.",
+  },
+  {
+    id: "12",
+    status: "IN_PROGRESS" as const,
+    HN: "000120227",
+    patientName: "Alice Johnson",
+    AN: "000114012",
+    department: "OPD" as const,
+    description:
+      "Dispensing Amlodipine 5mg x 28 tablets. Patient identity verified.",
+  },
+  {
+    id: "13",
+    status: "DONE" as const,
+    HN: "000120228",
+    patientName: "Somsak Boonyang",
+    AN: "000114013",
+    department: "OneStop" as const,
+    description:
+      "Dispensed: Atorvastatin 10mg x 30 tablets. Counseling provided.",
+  },
+  {
+    id: "14",
+    status: "OPEN" as const,
+    HN: "000120229",
+    patientName: "Pimchanok Srisai",
+    AN: "000114014",
+    department: "IPD" as const,
+    description: "Prescription pending print. Includes Aspirin 81mg.",
+  },
+  {
+    id: "15",
+    status: "IN_PROGRESS" as const,
+    HN: "000120230",
+    patientName: "David Lee",
+    AN: "000114015",
+    department: "OPD" as const,
+    description:
+      "Labeling Metformin 500mg x 60 tablets. Barcode check in progress.",
+  },
+  {
+    id: "16",
+    status: "DONE" as const,
+    HN: "000120231",
+    patientName: "Nattaya Prasit",
+    AN: "000114016",
+    department: "OneStop" as const,
+    description:
+      "Dispensed: Lisinopril 10mg x 30 tablets. Advised monitoring blood pressure.",
+  },
+  {
+    id: "17",
+    status: "OPEN" as const,
+    HN: "000120232",
+    patientName: "Suda Kumdee",
+    AN: "000114017",
+    department: "OPD" as const,
+    description:
+      "Prescription for Levothyroxine 50mcg x 30 tablets. Awaiting review.",
+  },
+  {
+    id: "18",
+    status: "IN_PROGRESS" as const,
+    HN: "000120233",
+    patientName: "Michael Brown",
+    AN: "000114018",
+    department: "IPD" as const,
+    description:
+      "Dispensing Omeprazole 20mg x 14 capsules. Checking interactions.",
+  },
+  {
+    id: "19",
+    status: "DONE" as const,
+    HN: "000120234",
+    patientName: "Thanakorn Jitprasert",
+    AN: "000114019",
+    department: "OPD" as const,
+    description:
+      "Dispensed: Metoprolol 50mg x 30 tablets. Advised on pulse monitoring.",
+  },
+  {
+    id: "20",
+    status: "OPEN" as const,
+    HN: "000120235",
+    patientName: "Sarah Wilson",
+    AN: "000114020",
+    department: "OneStop" as const,
+    description:
+      "Prescription received. Needs verification for Simvastatin 20mg.",
+  },
+  {
+    id: "21",
+    status: "IN_PROGRESS" as const,
+    HN: "000120236",
+    patientName: "Jirawat Manee",
+    AN: "000114021",
+    department: "IPD" as const,
+    description:
+      "Dispensing Furosemide 40mg x 20 tablets. Labeling in progress.",
+  },
+  {
+    id: "22",
+    status: "DONE" as const,
+    HN: "000120237",
+    patientName: "Emily Clark",
+    AN: "000114022",
+    department: "OPD" as const,
+    description:
+      "Dispensed: Clopidogrel 75mg x 30 tablets. Counseling completed.",
+  },
+  {
+    id: "23",
+    status: "OPEN" as const,
+    HN: "000120238",
+    patientName: "Somchai Kerdsin",
+    AN: "000114023",
+    department: "OneStop" as const,
+    description:
+      "Prescription for Allopurinol 100mg x 30 tablets pending review.",
+  },
+  {
+    id: "24",
+    status: "IN_PROGRESS" as const,
+    HN: "000120239",
+    patientName: "Natthaphon Rungroj",
+    AN: "000114024",
+    department: "IPD" as const,
+    description:
+      "Currently preparing insulin vials. Dose verification in process.",
+  },
+  {
+    id: "25",
+    status: "DONE" as const,
+    HN: "000120240",
+    patientName: "Jessica Adams",
+    AN: "000114025",
+    department: "OPD" as const,
+    description:
+      "Dispensed: Vitamin D3 1000IU x 30 capsules. Patient instructed on daily use.",
+  },
 ];
 
 export async function main() {
