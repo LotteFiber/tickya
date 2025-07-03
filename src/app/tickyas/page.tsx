@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 import { redirect } from "next/navigation";
 import { Heading } from "@/components/heading";
+import { SearchInput } from "@/components/search-input";
 import { Spinner } from "@/components/spinner";
 import { Button } from "@/components/ui/button";
 import {
@@ -43,6 +44,11 @@ const TickyasPage = async () => {
   return (
     <div className="flex flex-1 flex-col gap-y-8">
       <Heading title="Records Page" button={createButton} />
+      <div className="flex w-full justify-start">
+        <div className="w-full max-w-[420px]">
+          <SearchInput placeholder="Search records ..." />
+        </div>
+      </div>
 
       <Suspense fallback={<Spinner />}>
         <TickyaTable />
