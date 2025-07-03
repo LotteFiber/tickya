@@ -15,9 +15,14 @@ import {
 import { getAuth } from "@/features/auth/queries/get-auth";
 import { TickyaTable } from "@/features/tickya/components/tickya-table";
 import { TickyaUpsertForm } from "@/features/tickya/components/tickya-upsert-form";
+import { SearchParams } from "@/features/tickya/search-params";
 import { signInPath } from "@/paths";
 
-const TickyasPage = async () => {
+type TickyasPageProps = {
+  searchParams: Promise<SearchParams>;
+};
+
+const TickyasPage = async ({ searchParams }: TickyasPageProps) => {
   const { user } = await getAuth();
 
   if (!user) {
@@ -46,12 +51,12 @@ const TickyasPage = async () => {
       <Heading title="Records Page" button={createButton} />
       <div className="flex w-full justify-start">
         <div className="w-full max-w-[420px]">
-          <SearchInput placeholder="Search records ..." />
+          <SearchInput placeholder="Search HN ..." />
         </div>
       </div>
 
       <Suspense fallback={<Spinner />}>
-        <TickyaTable />
+        <TickyaTable searchParams={await searchParams} />
       </Suspense>
     </div>
   );
