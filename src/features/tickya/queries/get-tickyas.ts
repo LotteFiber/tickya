@@ -2,16 +2,19 @@ import { prisma } from "@/lib/prisma";
 import { SearchParams } from "../search-params";
 
 export const getTickyas = async (searchParams: SearchParams) => {
-  console.log(searchParams);
   return await prisma.tickya.findMany({
     where: {
-      HN: {
-        contains: searchParams.search,
-        mode: "insensitive",
-      },
+      ...(typeof searchParams.search === "string" && {
+        HN: {
+          contains: searchParams.search,
+          mode: "insensitive",
+        },
+      }),
     },
     orderBy: {
-      createdAt: "desc",
+      ...(searchParams.sort === undefined && { createdAt: "desc" }),
+      ...(searchParams.sort === "patientName" && { patientName: "asc" }),
+      ...(searchParams.sort === "department" && { department: "asc" }),
     },
   });
 };
